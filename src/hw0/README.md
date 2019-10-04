@@ -31,7 +31,7 @@ You should also use:
 
 when you are done with an image. So it goes away. You can check out how all this is implemented in `src/load_image.c`. You probably shouldn't change anything in this file. We use the `stb_image` libary for the actual loading and saving of jpgs because that is, like, REALLY complicated. I think. I've never tried. Anywho....
 
-You'll be modifying the file `src/process_image.c`. We've also included a python compatability library. `uwimg.py` includes the code to access your C library from python. `tryit.py` has some example code you can run. We will build the library using `make`. Simply run the command:
+You'll be modifying the file `src/process_image.c`. We've also included a python compatability library. `uwimg.py` includes the code to access your C library from python. `tryhw0.py` has some example code you can run. We will build the library using `make`. Simply run the command:
 
     make
     
@@ -41,7 +41,7 @@ after you make any changes to the code. Then you can quickly test your changes b
 
 You can also try running the example python code to generate some images:
 
-    python tryit.py
+    python tryhw0.py
 
 ## 0.0 Getting and setting pixels ##
 
@@ -66,7 +66,7 @@ Your first task is to fill out these two functions in `src/process_image.c`:
 
 We will use the `clamp` padding strategy. This means that if the programmer asks for a pixel at column -3, use column 0, or if they ask for column 300 and the image is only 256x256 you will use column 255 (because of zero-based indexing).
 
-We can test out our pixel-setting code on the dog image by removing all of the red channel. See line 3-8 in `tryit.py`:
+We can test out our pixel-setting code on the dog image by removing all of the red channel. See line 3-8 in `tryhw0.py`:
 
     # 1. Getting and setting pixels
     im = load_image("data/dog.jpg")
@@ -108,7 +108,7 @@ But we don't care about being toooo accurate so we'll just do the quick and easy
 
     Y' = 0.299 R' + 0.587 G' + .114 B'
 
-Using this conversion technique we get a pretty good grayscale image! Now we can run `tryit.py` to output `graybar.jpg`. See lines 10-13:
+Using this conversion technique we get a pretty good grayscale image! Now we can run `tryhw0.py` to output `graybar.jpg`. See lines 10-13:
 
     # 3. Grayscale image
     im = load_image("data/colorbar.png")
@@ -123,7 +123,7 @@ Implement this conversion for the function `rgb_to_grayscale`. Return a new imag
 
 Now let's write a function to add a constant factor to a channel in an image. We can use this across every channel in the image to make the image brighter or darker. We could also use it to, say, shift an image to be more or less of a given color.
 
-Fill in the code for `void shift_image(image im, int c, float v);`. It should add `v` to every pixel in channel `c` in the image. Now we can try shifting all the channels in an image by `.4` or 40%. See lines 15-20 in `tryit.py`:
+Fill in the code for `void shift_image(image im, int c, float v);`. It should add `v` to every pixel in channel `c` in the image. Now we can try shifting all the channels in an image by `.4` or 40%. See lines 15-20 in `tryhw0.py`:
 
     # 4. Shift Image
     im = load_image("data/dog.jpg")
@@ -142,7 +142,7 @@ Our image pixel values have to be bounded. Generally images are stored as byte a
 
 We represent our images using floating point values between 0 and 1. However, we still have to convert between our floating point representation and the byte arrays that are stored on disk. In the example above, our pixel values got above 1 so when we converted them back to byte arrays and saved them to disk they overflowed the byte data type and went back to very small values. That's why the very bright areas of the image looped around and became dark.
 
-We want to make sure the pixel values in the image stay between 0 and 1. Implement clamping on the image so that any value below zero gets set to zero and any value above 1 gets set to one. Fill in `void clamp_image(image im);` to modify the image in-place. Then when we clamp the shifted image and save it we see much better results, see lines 22-24 in `tryit.py`:
+We want to make sure the pixel values in the image stay between 0 and 1. Implement clamping on the image so that any value below zero gets set to zero and any value above 1 gets set to one. Fill in `void clamp_image(image im);` to modify the image in-place. Then when we clamp the shifted image and save it we see much better results, see lines 22-24 in `tryhw0.py`:
 
     # 5. Clamp Image
     clamp_image(im)
@@ -196,7 +196,7 @@ Notice that we are going to have H = \[0,1) and it should circle around if it ge
 
 Ok, now do it all backwards in `hsv_to_rgb`!
 
-Finally, when your done we can mess with some images! In `tryit.py` we convert an image to HSV, increase the saturation, then convert it back, lines 26-32:
+Finally, when your done we can mess with some images! In `tryhw0.py` we convert an image to HSV, increase the saturation, then convert it back, lines 26-32:
 
     # 6-7. Colorspace and saturation
     im = load_image("data/dog.jpg")
