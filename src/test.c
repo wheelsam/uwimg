@@ -31,13 +31,13 @@ int within_eps(float a, float b){
 int same_image(image a, image b){
     int i;
     if(a.w != b.w || a.h != b.h || a.c != b.c) {
-        printf("Expected %d x %d x %d image, got %d x %d x %d\n", b.w, b.h, b.c, a.w, a.h, a.c);
+        //printf("Expected %d x %d x %d image, got %d x %d x %d\n", b.w, b.h, b.c, a.w, a.h, a.c);
         return 0;
     }
     for(i = 0; i < a.w*a.h*a.c; ++i){
         if(!within_eps(a.data[i], b.data[i])) 
         {
-            printf("The value should be %f, but it is %f! \n", b.data[i], a.data[i]);
+            //printf("The value should be %f, but it is %f! \n", b.data[i], a.data[i]);
             return 0;
         }
     }
@@ -384,9 +384,25 @@ void test_cornerness()
     free_image(gt);
 }
 
+void test_hw0()
+{
+    test_get_pixel();
+    test_set_pixel();
+    test_copy();
+    test_shift();
+    test_grayscale();
+    test_rgb_to_hsv();
+    test_hsv_to_rgb();
+}
+void test_hw1(){}
+void test_hw2(){}
+void test_hw3(){}
+void test_hw4(){}
+void test_hw5(){}
+void test_hw6(){}
+
 void run_tests()
 {
-    //test_matrix();
     test_get_pixel();
     test_set_pixel();
     test_copy();

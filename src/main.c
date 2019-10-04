@@ -6,19 +6,16 @@
 
 int main(int argc, char **argv)
 {
-    char *in = find_char_arg(argc, argv, "-i", "data/dog.jpg");
-    char *out = find_char_arg(argc, argv, "-o", "out");
-    //float scale = find_float_arg(argc, argv, "-s", 1);
-    if(argc < 2){
-        printf("usage: %s [test | grayscale]\n", argv[0]);  
+    if(argc < 3){
+        printf("usage: %s test <hw0 | hw1...>\n", argv[0]);  
     } else if (0 == strcmp(argv[1], "test")){
-        run_tests();
-    } else if (0 == strcmp(argv[1], "grayscale")){
-        image im = load_image(in);
-        image g = rgb_to_grayscale(im);
-        save_image(g, out);
-        free_image(im);
-        free_image(g);
+        if (0 == strcmp(argv[2], "hw0")) test_hw0();
+        if (0 == strcmp(argv[2], "hw1")) test_hw1();
+        if (0 == strcmp(argv[2], "hw2")) test_hw2();
+        if (0 == strcmp(argv[2], "hw3")) test_hw3();
+        if (0 == strcmp(argv[2], "hw4")) test_hw4();
+        if (0 == strcmp(argv[2], "hw5")) test_hw5();
+        if (0 == strcmp(argv[2], "hw6")) test_hw6();
     }
     return 0;
 }
