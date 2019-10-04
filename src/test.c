@@ -393,13 +393,32 @@ void test_hw0()
     test_grayscale();
     test_rgb_to_hsv();
     test_hsv_to_rgb();
+    printf("%d tests, %d passed, %d failed\n", tests_total, tests_total-tests_fail, tests_fail);
 }
-void test_hw1(){}
-void test_hw2(){}
-void test_hw3(){}
-void test_hw4(){}
-void test_hw5(){}
-void test_hw6(){}
+void test_hw1()
+{
+    printf("%d tests, %d passed, %d failed\n", tests_total, tests_total-tests_fail, tests_fail);
+}
+void test_hw2()
+{
+    printf("%d tests, %d passed, %d failed\n", tests_total, tests_total-tests_fail, tests_fail);
+}
+void test_hw3()
+{
+    printf("%d tests, %d passed, %d failed\n", tests_total, tests_total-tests_fail, tests_fail);
+}
+void test_hw4()
+{
+    printf("%d tests, %d passed, %d failed\n", tests_total, tests_total-tests_fail, tests_fail);
+}
+void test_hw5()
+{
+    printf("%d tests, %d passed, %d failed\n", tests_total, tests_total-tests_fail, tests_fail);
+}
+void test_hw6()
+{
+    printf("%d tests, %d passed, %d failed\n", tests_total, tests_total-tests_fail, tests_fail);
+}
 
 void run_tests()
 {
